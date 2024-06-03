@@ -1,0 +1,2 @@
+recursive-include rwkv_simple/cuda *
+recursive-include rwkv_simple/vocab *

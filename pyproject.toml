@@ -1,0 +1,25 @@
+[project]
+name = "rwkv_simple"
+version = "0.1.1"
+authors = [
+  {name = "Ronsor Labs", email = "ronsor@ronsor.com"},
+]
+description = "Easy-to-use RWKV-6 (x060) implementation"
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.1.0",
+  "einops>=0.7.0",
+]
+
+[project.optional-dependencies]
+fla = ["fla"]
+
+[project.urls]
+Homepage = "https://github.com/ronsor/rwkv-simple"
+Issues = "https://github.com/ronsor/rwkv-simple/issues"
