@@ -366,9 +366,9 @@ class TimeMix(nn.Module):
       r, w, k, v = map(lambda x: rearrange(x, 'b l (h d) -> b h l d', h=self.n_head), (r, w, k, v))
 
       if backend == WKVBackend.FLA and x.size(1) == 1:
-        y, new_state = fla.ops.rwkv6.fused_recurrent_rwkv6(r, k, v, w, self.time_faaaa, initial_state=kv_state, output_final_state=need_state)
+        y, new_state = fla.ops.rwkv6.fused_recurrent_rwkv6(r, k, v, w, self.time_faaaa, scale=1, initial_state=kv_state, output_final_state=need_state)
       elif backend == WKVBackend.FLA and x.size(1) > 1:
-        y, new_state = fla.ops.rwkv6.chunk_rwkv6(r, k, v, w, self.time_faaaa, initial_state=kv_state, output_final_state=need_state)
+        y, new_state = fla.ops.rwkv6.chunk_rwkv6(r, k, v, w, self.time_faaaa, scale=1, initial_state=kv_state, output_final_state=need_state)
       elif backend == WKVBackend.PYTORCH_OPTIMIZED:
         y, new_state = wkv6_torch(r, k, v, w, self.time_faaaa, kv_state, self.wkv_chunk_len, self.wkv_dtype)
 
